@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<style>
+			.miobox
+			{
+				display: flex;
+			}
+			.miobox2
+			{
+				display: flex;
+			}
+			.miobox > div{
+				border: 1px outset black ;
+				height: 100px;
+				width: 100px;
+				margin:1px;
+				padding:5px;
+				background-color:grey;
+			}     
+			.miobox2 > div{
+				border: 1px outset black ;
+				height: 100px;
+				width: 100px;
+				margin:2px;
+				padding:10px;
+				background-color:lightblue;
+			} 
+			#esa{
+				background-color:orange;
+			}
+			button {
+				margin: 5px;
+				font-family: inherit;
+			}
+			.simple {
+				font-size: 14px;
+				font-weight: 200;
+				letter-spacing: 1px;
+				padding: 5px 10px 5px;
+				outline: 0;
+				border: 1px solid black;
+				cursor: pointer;
+				background-color: red;
+			}
+		</style>  
+	</head>  
+	<body bgcolor="white">
+		<script>
+			function funzione(int b){
+				var b = parseInt(document.b.value)
+				var d = 0;
+				var i = 0;
+				while(b>0){
+					if(b%10!=0) {
+						d=d+pow(2,i);
+					}
+					b=b/10;
+					i++;			
+				}
+				return b;
+			}
+		</script>
+		<div class="miobox">
+			<div>Binario</br>(8 cifre):</br><input type="text" name="a" size="4" value="00010001"></div>
+			<div>Binario</br>(8 cifre):</br><input type="text" name="b" size="4" value="00001111"></div>
+			<div>Binario</br>(8 cifre):</br><input type="text" name="c" size="4" value="00001101"></div>
+		</div>
+		
+		<button type="button" class="simple" onclick="funzione(a)">Converti</button>
+		<button type="button" class="simple" onclick="funzione(b)">Converti</button>
+		<button type="button" class="simple" onclick="funzione(c)">Converti</button>
+      
+		<div class="miobox2">
+			<div>17</div>
+			<div>15</div>
+			<div>13</div>
+		</div>
+
+		<div class="miobox">
+			<div id="esa">11 esa</div>
+			<div id="esa">0F esa</div>
+			<div id="esa">0D esa</div>
+		</div>
+	</body>
+</html>

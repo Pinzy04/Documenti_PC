@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    </head>
+    <style>
+        body {
+			background-color: Dodgerblue;
+            font-family: sans-serif;
+        }
+		h2 {
+			color: white;
+			background-color: black;
+		}
+        p {
+            color: white;
+            font-size: 18px;
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #b1b1b1;
+            overflow-x: auto;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px;
+        }
+        tr:nth-child(even) {
+            background-color: black;
+        }
+        td:nth-child(even), td:nth-child(odd) {
+            border: 1px solid #b1b1b1;
+        }
+        th:not(:first-child) {
+            border-left: 1px solid #b1b1b1;
+        }
+    </style>
+    <body>
+        <h2>Tabelline da 1 a 10</h2>
+        <table id="demo"></table>
+        <script>
+            var text = "";
+            var n = 1;
+            var i = 0;
+            text += "<tr>";
+            for(t=0;t<=10;t++) {
+                text += "<th>" + "<p>" + "Tabellina del " + t + "</p>" + "</th>";
+            }
+            text += "</tr>";
+            for(t=0;t<10;t++) {
+                text += "<tr>";
+                while (i <= 10) {
+                    text += "<td>" + "<p>" + n + "x" + i + "=" + i*n + "</p>" + "</td>";
+                    i++;
+                }
+                text += "</tr>";
+                n++;
+                i=0;
+            }
+            document.getElementById("demo").innerHTML = text;
+        </script>
+    </body>
+</html>
