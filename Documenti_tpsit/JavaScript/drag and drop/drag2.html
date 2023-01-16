@@ -1,0 +1,121 @@
+<html>
+<head>
+ 
+<style>
+.oggetto { float:left; width:30px; height:30px; border:1px solid #999;}
+.area { position:absolute; left:10px; width:200px; height:100px; background:rgb(255,255,200); border:1px solid #999; }
+</style>
+ 
+<SCRIPT src="js/jquery-1.7.2.min.js" ></SCRIPT>
+<SCRIPT src="js/jquery-ui-1.8.21.custom.min.js" ></SCRIPT>
+<script type="text/javascript">
+
+$(document).ready( function() {
+
+   z=12;
+   for(i=0;i<z;i++)
+   {
+      nuovo = document.createElement('div');
+      nuovo.setAttribute('id', 'd'+i);
+      nuovo.setAttribute('class', 'oggetto');
+      $("#base").append(nuovo);
+      if(i<4)
+      {
+         $("#d"+i).css({ 'background-color':'red' });
+         $("#d"+i).attr('tipo','a');
+      }
+      else
+      {
+         if(i<8)
+         {
+            $("#d"+i).css({ 'background-color':'white' });
+            $("#d"+i).attr('tipo','b');
+         }
+         else
+         {
+            $("#d"+i).css({ 'background-color':'blue' });
+            $("#d"+i).attr('tipo','c');
+         }
+      } 
+      $('#d'+i).draggable({ revert: true });
+   }
+
+   $('#base').css({ 'top':'10px', 'width':'500px', 'height':'130px' });
+   $('#uno').css({ 'top':'150px' });
+   $('#due').css({ 'top':'260px' });
+   $('#tre').css({ 'top':'150px', 'left':'230px'  });
+   $('#quattro').css({ 'top':'260px', 'left':'230px'  });
+
+   $('.area').droppable( {
+       drop: function ( event, ui ) {
+
+          quale=$(this).attr('id');
+          tipo=ui.draggable.attr('tipo'); 
+          flag=true;
+           
+          if(quale=='tre' && tipo=='b')
+             flag=false;
+
+          if(quale=='quattro' && tipo!='a')
+             flag=false;
+
+/*
+          if(quale=='due')
+          {
+             conta=0;
+             $(this).children('div').each(function () { conta++; });
+             if(conta>3) flag=false;
+          }
+*/
+ 
+          if(quale=='due')
+          {
+             conta=$(this).children('div').size();
+             if(conta>3) flag=false;
+          }
+
+          if(quale=='uno')
+          {
+             conta_a=0;
+             conta_b=0;
+             conta_c=0;
+             $(this).children('div').each(function () {
+                questo=$(this).attr('tipo');
+                if(questo=='a') conta_a++;   
+                if(questo=='b') conta_b++;   
+                if(questo=='c') conta_c++;   
+             });
+             if( (tipo=='a' && conta_a>1) || (tipo=='b' && conta_b>1) || (tipo=='c' && conta_c>1) )
+                flag=false;
+          }   
+
+          if(flag)
+          {
+             var dropped = ui.draggable;
+             var droppedOn = $(this);
+             $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);  
+          }
+          else
+          {
+             $(dropped).draggable( "option", "revert", true );
+          } 
+
+       }
+   });
+
+});
+
+</script>
+ 
+</head>
+<body>
+ 
+  <div class="area" id="base"></div>
+  <div class="area" id="uno"></div>
+  <div class="area" id="due"></div>
+  <div class="area" id="tre"></div>
+  <div class="area" id="quattro"></div>
+
+</body>
+</html>
+

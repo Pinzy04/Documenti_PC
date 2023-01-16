@@ -1,0 +1,40 @@
+<SCRIPT language='JavaScript'>
+function Scomposizione()
+{
+   n=parseInt(document.form1.n.value);
+   f=2;
+
+   document.write("<H4>Numero da scomporre : "+n+"</H4><BR>");
+
+   document.write("<TABLE border='1' >");
+   while(n>1)
+   {
+      r=n%f;
+      if(r==0)
+      {
+         document.write("<TR><TD>"+f+"</TD></TR>");
+   	     n=n/f;
+      }
+      else
+      {
+         f=f+1;
+      }	  
+   }
+   document.write("</TABLE>");
+   
+   document.write("<BR><A href='fattoriprimi.html'>Indietro</A>");
+}   
+</SCRIPT>
+
+<HTML>
+<BODY>
+
+<FORM name='form1'>
+
+   Numero da scomporre:&nbsp;<INPUT type='text' name='n' size='3' value='0'><BR>
+   <BR><INPUT type='button' name='k' value='Scomponi' onClick="Scomposizione()"><BR><BR>
+
+</FORM>
+
+</BODY>
+</HTML>

@@ -1,0 +1,51 @@
+<SCRIPT Language='JavaScript'>
+
+function inizia()
+{
+   var a=document.getElementById('A');
+
+   var colore = new Array();
+   colore[0]='red';
+   colore[1]='yellow';
+   colore[2]='green';
+   colore[3]='blue';
+   
+   setInterval(function () {
+      x=parseInt(Math.random()*4);
+      a.style.backgroundColor=colore[x];
+   }, 500);
+}
+
+</SCRIPT>
+
+
+<HTML>
+   <HEAD>
+   <TITLE>test1</TITLE>
+   </HEAD>
+
+   <style type="text/css">
+     
+      #A
+      {
+         left:100px;
+         top:50px;
+         background-color:white;
+         position:absolute;
+         height:100px;
+         width:100px;
+         border-width:1px;
+         border:solid black;
+      }
+
+   </style>
+
+
+    <BODY onLoad="inizia()">
+
+    <DIV id='A'></DIV>
+
+   </BODY>
+
+</HTML>
+

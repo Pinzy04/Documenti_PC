@@ -1,0 +1,40 @@
+<SCRIPT language="JavaScript">
+function punti()
+{
+   righe=parseInt(document.F1.RI.value)
+   colonne=parseInt(document.F1.CO.value)
+   document.write("<H3>Tabella</H3>")
+   
+   document.write("<TABLE border=1>")
+   for(i=0;i<righe;i++)
+   {
+      document.write("<TR>")
+       for(j=0;j<colonne;j++)
+       {
+          if((i+j)%2==0)
+		  {
+		   document.write("<TD bgcolor='red'>&nbsp;&nbsp;&nbsp;&nbsp;</TD>")
+		  }
+		  else
+		  {
+			document.write("<TD bgcolor='yellow'>&nbsp;&nbsp;&nbsp;&nbsp;</TD>")
+		  }
+       }
+      document.write("</TR>")
+   }
+   document.write("</TABLE>")
+}
+</SCRIPT>
+
+<HTML>
+   <BODY>
+      <H3>Tabella</H3>
+         <FORM name='F1'>
+	        Righe:<INPUT type='text' name='RI' size='3'>
+	        Colonne:<INPUT type='text' name='CO' size='3'>
+	        <BR>
+	        <INPUT type='submit' value='Invia' onClick='punti()'>
+	        <INPUT type='reset' value='Cancella'>
+	     </FORM>
+   </BODY>
+</HTML>

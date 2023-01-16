@@ -1,0 +1,54 @@
+<SCRIPT language="JavaScript">
+function istogramma()
+{
+   numero=parseInt(document.F1.N.value);
+
+   document.write("<H3>Simulazione verifica JavaScript</H3>");
+   document.write("<TABLE border='1'>");
+   
+   n=numero;
+   max=0;
+   
+   z=[];
+   for(i=0;i<n;i++)
+	  {
+	     z[i]=parseInt(Math.random() * 100 ) + 1;
+		 if(z[i]>max)
+			max=z[i];
+	  }
+   for(i=0;i<n;i++)
+   {
+        
+      document.write("<TR>");
+	  document.write("<TD>"+z[i]+"</TD>");
+      for(j=0;j<100;j++)
+      {
+         if(j<z[i])
+		 {
+			if(z[i]===max)
+				document.write("<TD bgcolor='blue'>&nbsp;</TD>");
+			else
+				document.write("<TD bgcolor='red'>&nbsp;</TD>");
+		 }
+         else
+            document.write("<TD>&nbsp;</TD>");
+      }
+      document.write("</TR>");
+	  
+   }
+
+   document.write("</TABLE>");
+
+}
+</SCRIPT>
+
+<HTML>
+   <BODY>
+      <H3>Simulazione verifica JavaScript</H3>
+         <FORM name='F1'>
+	        Numero di dati:<INPUT type='text' name='N' size='3'>
+	        <BR><BR>
+	        <INPUT type='submit' value='Invia' onClick='istogramma()'>
+	     </FORM>
+   </BODY>
+</HTML>

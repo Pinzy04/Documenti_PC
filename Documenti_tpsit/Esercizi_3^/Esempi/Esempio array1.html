@@ -1,0 +1,87 @@
+<SCRIPT language='JavaScript'>
+
+function disegna(a,pos)
+{
+   document.write("<TABLE border='1'>");
+      document.write("<TR>");
+	  for(i=0;i<c;i++)  
+	  {
+	    if(i==pos)
+		{
+           document.write("<TD style='background-color:rgb(255,0,0);color:rgb(255,255,255);'>");
+		}
+		else
+		{
+           document.write("<TD>");
+        }
+		
+	    n = a[i];
+        document.write("&nbsp;"+n+"&nbsp;");
+		
+        document.write("</TD>");
+	  }	
+      document.write("<TR>");
+   document.write("</TABLE>");
+
+}
+
+function array1()
+{
+   minimo=1;
+   massimo=99;
+
+   c = parseInt(document.F1.C.value);
+   
+   a = new Array();
+   //a = [];
+   for(i=0;i<c;i++)  
+   {
+      a[i] = parseInt(Math.random()*(massimo-minimo+1))+minimo;
+   }
+
+   pos=-1;
+   maxvett=0;
+   for(i=0;i<c;i++)  
+   {
+      if(a[i]>maxvett)
+	  {
+	     maxvett=a[i];
+		 pos=i;
+	  }
+   }
+   
+   disegna(a,pos);
+   
+   for(i=0;i<c-1;i++)
+   {
+      for(j=i+1;j<c;j++)
+      {
+         if(a[i]>a[j])
+         {
+            s=a[i];
+            a[i]=a[j];
+            a[j]=s;                               
+         }                                     
+      }  
+   } 
+
+   document.write("<BR>");
+   pos=c-1;
+   disegna(a,pos);
+
+   document.write("<BR><BR><A href='array1.html'>Indietro</A>");
+}   
+</SCRIPT>
+
+<HTML>
+<BODY>
+
+<H2>array monodimensionale</H2>
+
+<FORM name='F1'>
+   colonne:<INPUT type='text' name='C' size='3' value='0'>
+   <INPUT type='button' name='B' value='Genera' onClick='array1()'>
+</FORM>
+
+</BODY>
+</HTML>

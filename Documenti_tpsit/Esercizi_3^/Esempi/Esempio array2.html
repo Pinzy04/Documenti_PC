@@ -1,0 +1,78 @@
+<SCRIPT language='JavaScript'>
+
+function disegna(a,maxvett)
+{
+   document.write("<TABLE border='1'>");
+   for(j=0;j<r;j++)  
+   {
+      document.write("<TR>");
+	  for(i=0;i<c;i++)  
+	  {
+	    if(a[j][i]==maxvett)
+		{
+           document.write("<TD style='background-color:rgb(255,0,0);color:rgb(255,255,255);'>");
+		}
+		else
+		{
+           document.write("<TD>");
+        }
+		
+	    n = a[j][i];
+        document.write("&nbsp;"+n+"&nbsp;");
+		
+        document.write("</TD>");
+	  }	
+      document.write("</TR>");
+   }
+   document.write("</TABLE>");
+}
+
+function array2()
+{
+
+   minimo=1;
+   massimo=99;
+
+   r = parseInt(document.F1.R.value);
+   c = parseInt(document.F1.C.value);
+   
+   a = new Array();
+   for(j=0;j<r;j++)  
+   {
+      a[j] = new Array();
+      for(i=0;i<c;i++)  
+      {
+         a[j][i] = parseInt(Math.random()*(massimo-minimo+1))+minimo;
+	  }	 
+   }
+   
+   maxvett=0;
+   for(j=0;j<r;j++)  
+   {
+      for(i=0;i<c;i++)  
+      {
+         if(a[j][i]>maxvett)
+	     {
+	        maxvett=a[j][i];
+	     }
+      }
+   }
+   disegna(a,maxvett);
+   
+   document.write("<BR><BR><A href='array2bis.html'>Indietro</A>");
+}   
+</SCRIPT>
+
+<HTML>
+<BODY>
+
+<H2>array bidimensionale</H2>
+
+<FORM name='F1'>
+   righe:&nbsp;&nbsp;&nbsp;<INPUT type='text' name='R' size='3' value=''>
+   colonne:&nbsp;<INPUT type='text' name='C' size='3' value=''>
+   <INPUT type='button' name='B' value='Genera' onClick='array2()'>
+</FORM>
+
+</BODY>
+</HTML>

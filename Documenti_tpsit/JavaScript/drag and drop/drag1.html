@@ -1,0 +1,82 @@
+<html>
+<head>
+ 
+<style>
+.muovi { float:left; width:60px; height: 60px; background:rgb(0,200,0); color:white; border:1px solid #999;}
+.area { position:absolute; top:10px; width:200px; height:450px; background:rgb(255,255,200); border:1px solid #999; }
+</style>
+ 
+<SCRIPT src="js/jquery-1.7.2.min.js" ></SCRIPT>
+<SCRIPT src="js/jquery-ui-1.8.21.custom.min.js" ></SCRIPT>
+<script type="text/javascript">
+
+$(document).ready( function() {
+   $('#lupo').draggable({ revert: true });
+   $('#capra').draggable({ revert: true });
+   $('#cavolo').draggable({ revert: true });
+   $('#lupo').appendTo($('#uno'));
+   $('#capra').appendTo($('#uno'));
+   $('#cavolo').appendTo($('#uno'));
+
+   $('#uno').css({ 'left':'10px' });
+   $('#due').css({ 'left':'410px' });
+
+   $('#uno').droppable( {
+       drop: function ( event, ui ) {
+
+          nome=ui.draggable.attr('id'); 
+          var dropped = ui.draggable;
+          var droppedOn = $(this);
+          $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);  
+
+       }
+   });
+
+   $('#due').droppable( {
+       drop: function ( event, ui ) {
+
+          nome=ui.draggable.attr('id'); 
+          flag=true;
+          $(this).children('div').each(function () {
+             esiste=this.id;
+             if(nome=='lupo' && esiste=='capra')     
+                flag=false;
+             if(nome=='capra' && esiste=='cavolo')     
+                flag=false;
+             if(nome=='capra' && esiste=='lupo')     
+                flag=false;
+             if(nome=='cavolo' && esiste=='capra')     
+                flag=false;
+
+          });
+
+          if(flag)
+          {
+             var dropped = ui.draggable;
+             var droppedOn = $(this);
+             $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);  
+          }
+          else
+          {
+             $(dropped).draggable( "option", "revert", true );
+          } 
+
+       }
+   });
+
+});
+
+</script>
+ 
+</head>
+<body>
+ 
+  <div class="area" id="due"></div>
+  <div class="area" id="uno"></div>
+  <div class="muovi" id="lupo"><b>lupo</b></div>
+  <div class="muovi" id="capra"><b>capra</b></div>
+  <div class="muovi" id="cavolo"><b>cavolo</b></div>
+
+</body>
+</html>
+

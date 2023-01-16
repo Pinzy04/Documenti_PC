@@ -1,0 +1,108 @@
+<SCRIPT language='JavaScript'>
+
+function disegna(a)
+{
+   document.write("<TABLE border='1'>");
+   for(j=0;j<r;j++)  
+   {
+      document.write("<TR>");
+
+      for(i=0;i<c;i++)  
+	  {
+	    if(a[j][i]%2==1)
+		{
+           document.write("<TD style='background-color:rgb(255,255,0);'>");
+		}
+		else
+		{
+           document.write("<TD>");
+        }
+		
+	    n = a[j][i];
+        document.write("&nbsp;"+n+"&nbsp;");
+		
+        document.write("</TD>");
+	  }	
+      document.write("</TR>");
+   }
+   document.write("</TABLE>");
+}
+
+function matrice()
+{
+
+   minimo=1;
+   massimo=99;
+
+   r = parseInt(document.F1.R.value);
+   c = parseInt(document.F1.C.value);
+   
+   a = new Array();
+   b = new Array();
+   
+   for(j=0;j<r;j++)  
+   {
+      a[j] = new Array();
+	  b[j] = new Array();
+      for(i=0;i<c;i++)  
+      {
+         a[j][i] = parseInt(Math.random()*(massimo-minimo+1))+minimo;
+		 b[j][i] = a[j][i];
+	  }	 
+   }
+   
+    disegna(a);
+   
+  for(l=0;l<c;l++)
+  {
+   for(j=0;j<c;j++)
+   {
+      for(i=0;i<r-1;i++)
+      {
+         for(k=i+1;k<r;k++)
+         {
+            if(b[j][i]%2==0)
+            {
+               s=b[j][i];
+               b[j][i]=b[j][k];
+               b[j][k]=s;
+            }                                     
+         }
+      }
+   }
+   for(j=0;j<r;j++)
+   {
+      for(i=0;i<c-1;i++)
+      {
+         for(k=i+1;k<c;k++)
+         {
+            if(b[j][i]%2==0)
+            {
+               s=b[j][i];
+               b[j][i]=b[k][i];
+               b[k][i]=s;
+            }                                    
+         } 
+      } 
+   }
+  }
+   document.write("<BR>");
+   disegna(b);
+   
+   document.write("<BR><BR><A href='PINZARRONE.html'>Indietro</A>");
+}   
+</SCRIPT>
+
+<HTML>
+<BODY>
+
+<H2>matrice</H2>
+
+<FORM name='F1'>
+   righe:&nbsp;&nbsp;&nbsp;<INPUT type='text' name='R' size='3' value=''>
+   colonne:&nbsp;<INPUT type='text' name='C' size='3' value=''>
+   <INPUT type='button' name='B' value='Genera' onClick='matrice()'>
+</FORM>
+
+</BODY>
+</HTML>

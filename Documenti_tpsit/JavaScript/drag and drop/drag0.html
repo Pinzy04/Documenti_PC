@@ -1,0 +1,63 @@
+<html>
+   <head>
+   <title>Drag & Drop</title>
+   <style type="text/css">
+   .dragMe {
+      background-color:#8FBC8F;
+      border:1px solid black;
+      color: #fff;
+      float:left;
+      font-family:verdana,arial;
+      font-size:14px;
+      font-weight:bold;
+      height:100px;
+      margin:10px;
+      text-align:center;
+      width:100px;
+    }
+    </style>
+
+    <SCRIPT src="js/jquery-1.7.2.min.js" ></SCRIPT>
+    <SCRIPT src="js/jquery-ui-1.8.21.custom.min.js" ></SCRIPT>
+    <script type="text/javascript">
+			$(document).ready(function ()
+			{
+				var mousex = 0, mousey = 0;
+				var divLeft, divTop;
+				$('.dragMe').mousedown(function(e)
+				{
+					var offset = $(this).offset();
+					divLeft = parseInt(offset.left);
+					divTop = parseInt(offset.top);
+					mousey = e.pageY;
+					mousex = e.pageX;
+					$(this).bind('mousemove',dragElement);
+				});
+
+				function dragElement(event)
+				{
+					var left = divLeft + (event.pageX - mousex);
+					var top = divTop + (event.pageY - mousey);
+					$(this).css(
+					{
+						'top' :  top + 'px',
+						'left' : left + 'px',
+						'position' : 'absolute'
+					});
+					return false;
+				}
+				$(document).mouseup(function()
+				{
+					$('.dragMe').unbind('mousemove');
+				});
+
+			});
+   </script>
+   </head>
+
+   <body>
+      <div class="dragMe">Uno</div>
+      <div class="dragMe">Due</div>
+      <div class="dragMe">Tre</div>
+   </body>
+</html>
