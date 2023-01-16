@@ -1,0 +1,18 @@
+********************************************************************************
+***                            Micro-Cap 10.2.0.0                            ***
+***                                  aula3s                                  ***
+***                                   lab                                    ***
+***                    Transient Analysis of FSK-PLL_pit2                    ***
+********************************************************************************
+Limits
+======
+Time Range           50m
+Maximum Time Step    10u
+Number of Points     51
+Temperature          Linear 27
+Retrace Runs         1
+Run Options          Normal
+State Variables      Zero
+Operating Point      Off
+Operating Point Only Off
+

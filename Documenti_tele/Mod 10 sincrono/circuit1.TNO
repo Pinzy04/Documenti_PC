@@ -1,0 +1,33 @@
+********************************************************************************
+***                            Micro-Cap 10.2.0.0                            ***
+***                                  Fabio                                   ***
+***                                JCMaxwell                                 ***
+***                      Transient Analysis of circuit1                      ***
+***                           13/03/2021 16:11:31                            ***
+********************************************************************************
+Limits
+======
+Time Range           25u
+Maximum Time Step    0.05u
+Number of Points     51
+Temperature          Linear 27
+Retrace Runs         1
+Run Options          Normal
+State Variables      Zero
+Operating Point      On
+Operating Point Only Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27 
+
+DC Operating Point Digital States
+=================================
+Node     State Node     State Node     State Node     State Node     State
+J0       1     CLR      0     CLK      0     K1       0     5        1    
+J1       0     Q1       0     8        1     J2       0     Q2       0    
+11       1     J3       0     Q3       0     Q3B      1    
+
